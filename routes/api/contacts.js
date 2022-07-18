@@ -1,15 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const Joi = require('joi');
 
 const contacts = require('../../models/contacts');
 const {createError} = require('../../helpers');
+const contactSchema = require('../../schemas/contactSchema')
 
-const contactSchema = Joi.object({
-  name: Joi.string().min(3).max(30).required(),
-  email: Joi.string().email().required(),
-  phone: Joi.string().regex(/^[+]?[\s./0-9]*[(]?[0-9]{1,4}[)]?[-\s./0-9]*$/).required()
-})
 
 router.get('/', async (req, res, next) => {
   try {
