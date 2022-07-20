@@ -8,7 +8,9 @@ const getById = async (req, res) => {
     if (!result) {
         throw createError(404);
     }
-    res.json(result);
+    res.json({
+        status: 'success', code: 200, data: { result } 
+    });
 }
 
 module.exports = getById;
