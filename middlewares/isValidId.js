@@ -7,7 +7,7 @@ const isValidId = (req, res, next)=> {
     const result = isValidObjectId(id);
     if(!result){
         const error = createError(400, "Invalid id");
-        return next(error);
+        throw new Error(error.message);
     }
     next();
 }

@@ -5,17 +5,17 @@ const ctrl = require("../../controllers/contacts");
 
 const {ctrlWrapper} = require("../../helpers");
 
-const {validation, isValidId} = require("../../middlewares");
+const {validation, isValidId, user} = require("../../middlewares");
 
 const {add, updateStatusContact} = require("../../schemas");
 
 const router = express.Router();
 
-router.get("/", ctrlWrapper(ctrl.listContacts));
+router.get("/", user, ctrlWrapper(ctrl.listContacts));
 
 router.get("/:id", isValidId, ctrlWrapper(ctrl.getById));
 
-router.post("/", validation(add), ctrlWrapper(ctrl.addContact));
+router.post("/", user, validation(add), ctrlWrapper(ctrl.addContact));
 
 router.put("/:id", isValidId, validation(add), ctrlWrapper(ctrl.updateContact));
 

@@ -1,7 +1,10 @@
-const add = require('./add');
-const updateStatusContact = require('./updateStatusContact');
+const {add, updateStatusContact} = require('./contact');
+const {signupSchema, loginSchema, patchSchema} = require('./user');
 
 module.exports = {
-    add,
-    updateStatusContact
+    add, 
+    updateStatusContact,
+    signupSchema,
+    loginSchema,
+    patchSchema
 }
