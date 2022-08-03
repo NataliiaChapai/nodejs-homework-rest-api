@@ -3,7 +3,7 @@ const express = require("express");
 const ctrl = require("../../controllers/users");
 
 const {ctrlWrapper} = require("../../helpers");
-const {validation, user} = require("../../middlewares");
+const {validation, user, upload} = require("../../middlewares");
 
 const {signupSchema, loginSchema} = require('../../schemas');
 
@@ -16,6 +16,8 @@ router.post('/login', validation(loginSchema), ctrlWrapper(ctrl.login))
 router.get('/current', user, ctrlWrapper(ctrl.getCurrent));
 
 router.get('/logout', user, ctrlWrapper(ctrl.logout));
+
+router.patch('/avatars', user, upload.single('avatar'), ctrlWrapper(ctrl.updateAvatar));
 
 router.patch('/', user, ctrlWrapper(ctrl.updateSubscription));
 
