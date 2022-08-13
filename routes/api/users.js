@@ -21,4 +21,8 @@ router.patch('/avatars', user, upload.single('avatar'), ctrlWrapper(ctrl.updateA
 
 router.patch('/', user, ctrlWrapper(ctrl.updateSubscription));
 
+router.get('/verify/:verificationToken', ctrlWrapper(ctrl.verifyEmail));
+
+router.get('/verify', ctrlWrapper(ctrl.resendVerifyEmail));
+
 module.exports = router;
